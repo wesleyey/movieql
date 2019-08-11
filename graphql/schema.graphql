@@ -1,3 +1,11 @@
-type Query {
+type users {
+    id: Int!
     name: String!
+    age: Int!
+    region: String!
+}
+
+type Query {
+    user : [users]!
+    users(id: Int): users
 }
