@@ -1,4 +1,4 @@
-export const users = [
+export let users = [
   {
     id: 0,
     name: "DevWesley",
@@ -31,7 +31,30 @@ export const users = [
   }
 ];
 
+export const allUsers = () => users;
+
 export const getUser = id => {
-  const filteredUser = users.filter(users => users.id === id);
+  const filteredUser = users.filter(user => user.id === id);
   return filteredUser[0];
+};
+
+export const deleteUser = id => {
+  const deleteResult = users.filter(user => user.id !== id);
+  if (users.length > deleteResult.length) {
+    users = deleteResult;
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const addUser = (name, age, region) => {
+  const newUser = {
+    id: users.length + 1,
+    name,
+    age,
+    region
+  };
+  users.push(newUser);
+  return newUser;
 };

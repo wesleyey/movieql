@@ -1,9 +1,12 @@
-import { users, getUser } from "./db";
+import { allUsers, getUser, addUser } from "./db";
 
 const resolvers = {
   Query: {
-    user: () => users,
+    user: () => allUsers(),
     users: (_, { id }) => getUser(id)
+  },
+  Mutation: {
+    addUser: (_, { name, age, region }) => addUser(name, age, region)
   }
 };
 
