@@ -3,7 +3,7 @@ import { users, getUser } from "./db";
 const resolvers = {
   Query: {
     user: () => users,
-    users: () => getUser()
+    users: (_, { id }) => getUser(id)
   }
 };
 
